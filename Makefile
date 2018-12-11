@@ -4,4 +4,4 @@ build:
 	docker build -t $(PROJECT_NAME) --rm .
 
 run:
-	docker run -it $(PROJECT_NAME):latest
+	docker run -it -p 8081:8080 $(PROJECT_NAME):latest
