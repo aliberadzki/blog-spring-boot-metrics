@@ -4,4 +4,7 @@ build:
 	docker build -t $(PROJECT_NAME) --rm .
 
 run:
-	docker run -it -p 8081:8080 $(PROJECT_NAME):latest
+	docker-compose up -d
+
+stop:
+	docker-compose down

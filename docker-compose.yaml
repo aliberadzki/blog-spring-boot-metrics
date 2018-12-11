@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  spring-boot:
+    image: aliberadzki/spring-with-actuator
+    ports:
+    - "8081:8080"
+    container_name: aliberadzki-spring-with-actuator
+
+  prometheus:
+    image: prom/prometheus:v2.5.0
+    ports:
+    - "9091:9090"
+    container_name: aliberadzki-prometheus
+    command:
+    - "--config.file=/etc/prometheus/prometheus.yml"
+    volumes:
+    - ./prometheus/etc/:/etc/prometheus/
+    links:
+    - spring-boot
