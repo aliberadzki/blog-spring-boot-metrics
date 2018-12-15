@@ -8,3 +8,6 @@ run:
 
 stop:
 	docker-compose down
+
+clean:
+	docker rmi $(PROJECT_NAME)
