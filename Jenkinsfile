@@ -1,20 +1,21 @@
 pipeline {
-  agent {
-    docker {
-      image 'maven:3.3.3'
-    }
-
-  }
+  agent any
   stages {
     stage('build') {
       parallel {
         stage('build') {
+          agent {
+            docker {
+              image 'maven:3.3.3'
+            }
+
+          }
           steps {
             sh 'mvn --version'
           }
         }
 
-        stage('') {
+        stage('error') {
           agent {
             docker {
               image 'alpine:3.8'
