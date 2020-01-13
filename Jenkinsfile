@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'cat /etc/hosts && cat /etc/resolv.conf && nslookup sonar'
+        sh 'cat /etc/hosts && cat /etc/resolv.conf && ping -w 5 tmpl_sonar.cindy_default'
         sh 'mvn --version'
       }
     }
