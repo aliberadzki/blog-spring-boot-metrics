@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'mvn --version'
-        sh 'mvn sonar:sonar'
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://sonar:9000'
       }
     }
 
