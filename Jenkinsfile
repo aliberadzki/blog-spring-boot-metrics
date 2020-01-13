@@ -7,9 +7,27 @@ pipeline {
   }
   stages {
     stage('build') {
-      steps {
-        sh 'cat /etc/hosts && cat /etc/resolv.conf && ping -w 5 tmpl_sonar.cindy_default'
-        sh 'mvn --version'
+      parallel {
+        stage('build') {
+          steps {
+            sh 'mvn --version'
+          }
+        }
+
+        stage('') {
+          agent {
+            docker {
+              image 'alpine:3.8'
+            }
+
+          }
+          steps {
+            sh '''cat /etc/hosts \\
+&& cat /etc/resolv.conf \\
+&& nslookup sonar'''
+          }
+        }
+
       }
     }
 
