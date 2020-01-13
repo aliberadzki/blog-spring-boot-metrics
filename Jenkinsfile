@@ -26,7 +26,6 @@ pipeline {
           steps {
             sh '''cat /etc/hosts \\
 && cat /etc/resolv.conf \\
-&& sleep 30
 && nslookup sonar'''
           }
         }
