@@ -19,6 +19,7 @@ pipeline {
           agent {
             docker {
               image 'alpine:3.8'
+              args '--network=cindy_default'
             }
 
           }
